@@ -18,29 +18,29 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-class AdminPanelProvider extends PanelProvider
+class PaymentsPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->default()
-            ->id('admin')
-            ->path('admin')
-            ->login()
+            ->id('payments')
+            ->path('payments')
             ->colors([
                 'danger' => Color::Red,
                 'gray' => Color::Slate,
                 'info' => Color::Blue,
+                'primary' => Color::Lime,
                 'success' => Color::Emerald,
                 'warning' => Color::Orange,
-                'primary' => Color::Amber,
             ])
-            ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
-            ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
+            ->login()
+            ->profile()
+            ->discoverResources(in: app_path('Filament/Payments/Resources'), for: 'App\\Filament\\Payments\\Resources')
+            ->discoverPages(in: app_path('Filament/Payments/Pages'), for: 'App\\Filament\\Payments\\Pages')
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
+            ->discoverWidgets(in: app_path('Filament/Payments/Widgets'), for: 'App\\Filament\\Payments\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,

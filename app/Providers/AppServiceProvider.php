@@ -23,14 +23,22 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         PanelSwitch::configureUsing(function (PanelSwitch $panelSwitch) {
-            $panelSwitch->simple()
+            $panelSwitch            
+            ->simple()
+            ->iconSize(8)
             ->labels([
-                'admin' => 'Custom Admin Label',
-                'general_manager' => __('General Manager')
+                'admin'     => __('Administración'),                
+                'store'     => __('Almacén'),  
+                'booking'   => __('Reservas'),               
+                'payments'  => __('Pagos'),                
+                'style'     => __('Visualización')
             ])
             ->icons([
-                'validPanelId1' => 'heroicon-o-square-2-stack',
-                'validPanelId2' => 'heroicon-o-star',
+                'admin'     => 'heroicon-o-building-library',
+                'store'     => 'heroicon-o-building-storefront',
+                'booking'   => 'heroicon-o-bookmark-square',
+                'payments'  => 'heroicon-o-banknotes',
+                'style'     => 'heroicon-o-view-columns',
             ], $asImage = false);
         });
 
